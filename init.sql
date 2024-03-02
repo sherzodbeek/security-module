@@ -1,0 +1,3 @@
+CREATE USER root;
+CREATE DATABASE service-db;
+GRANT ALL PRIVILEGES ON DATABASE service-db TO root;
