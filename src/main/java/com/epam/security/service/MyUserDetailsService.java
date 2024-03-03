@@ -11,12 +11,19 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public MyUserDetailsService(UserRepository userRepository) {
+    private final BruteForceProtectionService bruteForceProtectionService;
+
+    public MyUserDetailsService(UserRepository userRepository, BruteForceProtectionService bruteForceProtectionService) {
         this.userRepository = userRepository;
+        this.bruteForceProtectionService = bruteForceProtectionService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        if (bruteForceProtectionService.isBruteForceAttack(username)) {
+            throw new RuntimeException("Blocked");
+        }
+
         return userRepository.
                 findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found!"));

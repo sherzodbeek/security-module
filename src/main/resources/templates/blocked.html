@@ -9,7 +9,19 @@
           crossorigin="anonymous">
 </head>
 <body>
-<h1>About Page</h1>
-<div th:insert="~{index :: footer}"></div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Blocked Users</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="username: ${blockedUsers}">
+        <td th:text="${username}" />
+    </tr>
+    </tbody>
+</table>
+
 </body>
+<div th:insert="~{index :: footer}"></div>
 </html>

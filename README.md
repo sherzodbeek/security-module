@@ -10,3 +10,9 @@ Module 4: Authentication and Authorization
 4. Use a non-embedded DB to store users.
 5. Use salt and hashing to store user passwords.
 6. Create additional REST endpoint "GET /about" and configure non-authenticated access to it.
+
+7. Create one more REST endpoint "GET /admin".
+8. Now you need to add authorised access to "GET /info" and "GET /admin", add "VIEW_INFO", "VIEW_ADMIN" permissions for it. Create 3 users with different combination of permissions.
+9. Create new Login/Logout pages and configure Spring Security to use new Login/Logout.
+10. Add Brute Force protector. BLock user email for 5 minute on 3 unsuccessful login.
+11. Create an endpoint to show blocked users
